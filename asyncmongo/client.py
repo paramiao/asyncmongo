@@ -49,6 +49,7 @@ class Client(object):
         
     """
     def __init__(self, pool_id=None, **kwargs):
+        ConnectionPools.close_idle_connections()
         self._pool = ConnectionPools.get_connection_pool(pool_id, **kwargs)
     
     def __getattr__(self, name):
